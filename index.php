@@ -53,30 +53,30 @@
 	<div class="wrapper">
 		<section class="form signup">
 			<header>Signup</header>
-			<form action="#" class="form">
+			<form action="#" class="form" enctype="multipart/form-data">
 				<div class="error-txt">
 					This is the error message
 				</div>
 				<div class="name-details">
 					<div class="field input">
 						<label>First Name</label>
-						<input type="text" name="fname" placeholder="First Name..">
+						<input type="text" name="fname" placeholder="First Name.."required>
 					</div>
 					<div class="field input">
 						<label>Last Name</label>
-						<input type="text" name="lname" placeholder="Last Name..">
+						<input type="text" name="lname" placeholder="Last Name.."required>
 					</div>
 				</div>
 				<div class="login-details">
 				
 					<div class="field input">
 						<label>Email Address</label>
-						<input type="email" name="email" placeholder="Email Address..">
+						<input type="email" name="email" placeholder="Email Address.."required>
 					</div>
 					<div class="field input">
 
 						<label>Password</label>
-						<input type="password" name="pwd" placeholder="Password..">
+						<input type="password" name="pwd" placeholder="Password.."required>
 						<i class="fas fa-eye"></i>
 						
 					</div>
@@ -117,6 +117,7 @@
 		Made by Neel Choksi 19BCE0990 , Vedant Karale 19BCE2050
 	</footer>
 <script src="javascript/password-show-hide.js"></script>
+<script src="javascript/signup.js"></script>
 </body>
 </html>
 

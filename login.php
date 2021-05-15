@@ -27,7 +27,7 @@
 				<a href="index.php">Home</a>
 			</li>
 			<li>
-				<a href="login.php">Login</a>
+				<a href="index.php">Signup</a>
 			</li>
 			<li>
 				<a href="about.php">About</a>
@@ -99,8 +99,7 @@
 </html>
 
 <?php 
-	
-	$conn = mysqli_connect("localhost","root","","travelmoneyfinal");
+	include_once "includes/config.php";
 	
 	if(isset($_POST['submit_signup'])){
 		$username = htmlentities(mysqli_real_escape_string($conn,$_POST['email']));	
