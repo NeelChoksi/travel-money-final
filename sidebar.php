@@ -8,24 +8,31 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Dashboard</title>
+	<title>Travel Money</title>
+
+	<link rel="stylesheet" href="styles/indexstyle.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+	
+	<script src="https://kit.fontawesome.com/a076d05399.js" ></script>
 
 </head>
 <body>
 	<nav>
-		<a href="#">Travel Money</a>
+		<input type="checkbox" id="check">
+		<label for="check">
+			<i class="fas fa-bars" id="btn"></i>
+			<i class="fas fa-times" id="cancel"></i>
+		</label>
+		<h2>Travel Money</h2>
 		<ul>
-			<li>
-				<a href="dashboard.php">Dashboard</a>
-			</li>
-			
+
 		<?php 
 			if($context == 'traveller'){?>
 			<li>
-				<?php echo $_SESSION['current_user']; ?>
+				<a>Welcome <?php echo $_SESSION['current_user']; ?></a>
 			</li>
 			<li>
-				<a href="#">Traveller Dashboard</a>
+				<a href="dashboard.php">Traveller Dashboard</a>
 				<!-- add post , modify order (current: accept->deliver)	-->
 
 				<!-- Repeat: posts, orders, messages-->
@@ -37,7 +44,7 @@
 				<a href="#">Traveller Orders</a>
 			</li>
 			<li>
-				<a href="#">Traveller Messages</a>
+				<a href="users.php">Traveller Messages</a>
 			</li>
 
 		<?php } ?>
@@ -45,10 +52,10 @@
 		<?php 
 		    if($context == 'customer'){?>
 			<li>
-				<?php echo $_SESSION['current_user']; ?>
+				<a>Welcome <?php echo $_SESSION['current_user']; ?> </a>
 			</li>
 			<li>
-				<a href="#">Customer Dashboard</a>
+				<a href="dashboard.php">Customer Dashboard</a>
 				<!--  modify order (current: delivered)	-->
 
 				<!-- Repeat: posts, orders, messages-->
@@ -60,7 +67,7 @@
 				<a href="#">Customer Orders</a>
 			</li>
 			<li>
-				<a href="#">Customer Messages</a>
+				<a href="users.php">Customer Messages</a>
 				<!--add order -->
 			</li>
 		<?php } ?>

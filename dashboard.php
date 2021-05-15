@@ -5,12 +5,10 @@
 ?>
 
 
-	<div>
-		<h1>Dashboard</h1>
+	<div class="dashboard">
 		
 		<?php 
 			if($context == 'traveller'){?>
-				<h2>Traveller Dashboard</h2>
 				<?php
 					include('traveller/traveller-dashboard.php');
 				?>
@@ -21,7 +19,6 @@
 		<?php 
 
 		     if($context == 'customer'){?>
-				<h2>Customer Dashboard</h2>	
 				<?php
 					include('customer/customer-dashboard.php');
 				?>	
