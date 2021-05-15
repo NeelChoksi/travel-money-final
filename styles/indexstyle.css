@@ -324,8 +324,8 @@ label #cancel{
 	top:65%;
 	transform: translateY(-50%);
 	cursor:pointer;
-
 }
+
 
 footer{
 	width: 80%;
@@ -416,6 +416,7 @@ footer{
 	align-items: center;
 	justify-content: space-between;
 	flex-direction: column;
+
 }
 .search .text{
 	font-size: 1rem;
@@ -431,6 +432,13 @@ footer{
 	border-radius: .4rem;
 	margin:.2rem 0;
 
+/*	opacity: 0;
+	pointer-events: none;
+	transition: all 0.3s ease;
+*/}
+.search-bar input.active{
+	opacity: 1;
+	pointer-events: auto;
 }
 .search-bar button{
 	font-size: 1em;

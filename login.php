@@ -51,7 +51,7 @@
 	<div class="wrapper">
 		<section class="form signup">
 			<header>Login</header>
-			<form action="login.php" method="POST">
+			<form action="login.php" method="POST" class="form">
 				<div class="error-txt">
 					This is the error message
 				</div>
@@ -93,6 +93,8 @@
 <footer>
 		Made by Neel Choksi 19BCE0990 , Vedant Karale 19BCE2050
 	</footer>
+
+	<script src="javascript/password-show-hide.js"></script>
 </body>
 </html>
 
