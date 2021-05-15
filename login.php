@@ -50,21 +50,12 @@
 
 	<div class="wrapper">
 		<section class="form signup">
-			<header>Signup</header>
-			<form action="#">
+			<header>Login</header>
+			<form action="login.php" method="POST">
 				<div class="error-txt">
 					This is the error message
 				</div>
-				<div class="name-details">
-					<div class="field input">
-						<label>First Name</label>
-						<input type="text" name="fname" placeholder="First Name..">
-					</div>
-					<div class="field input">
-						<label>Last Name</label>
-						<input type="text" name="lname" placeholder="Last Name..">
-					</div>
-				</div>
+
 				<div class="login-details">
 				
 					<div class="field input">
@@ -74,41 +65,32 @@
 					<div class="field input">
 						<label>Password</label>
 						<input type="password" name="pwd" placeholder="Password..">
+						<i class="fas fa-eye"></i>
 					</div>
 				</div>
-				<div class="image-upload">
-					<div class="field image-select">
-						<label>Select Profile Image</label>
-						<input type="file" name="profile_img" >
-					</div>
-					<div class="field image-select">
-						<label>Aadhar Card</label>
-						<input type="file" name="aadhar_card" >
-					</div>
-					
+
+				<div class="field select-field">
+					<label for="typeofUser">Traveller or Customer?</label>
+
+					<select name="type" id="typeOfUser">
+					  <option value="traveller">Traveller</option>
+					  <option value="customer">Customer</option>
+					</select>
 				</div>
 
-					<div class="field select-field">
-						<label for="typeofUser">Traveller or Customer?</label>
-
-						<select name="type" id="typeOfUser">
-						  <option value="traveller">Traveller</option>
-						  <option value="customer">Customer</option>
-						</select>
-					</div>
-
-					<div class="field submit-btn">
-						<input type="submit" name="submit_signup" value="Signup" >
-					</div>
-					<div class="link">
-						Already have an account? <a href="login.php">Login here</a>
-					</div>
+				<div class="field submit-btn">
+					<input type="submit" name="submit_signup" value="Login" >
+				</div>
+				<div class="link">
+					Don't have an account? <a href="index.php">Register here</a>
+				</div>
 
 				
 			</form>
 		</section>
 	</div>
-	<footer>
+
+<footer>
 		Made by Neel Choksi 19BCE0990 , Vedant Karale 19BCE2050
 	</footer>
 </body>
@@ -116,5 +98,27 @@
 
 <?php 
 	
+	$conn = mysqli_connect("localhost","root","","travelmoneyfinal");
 	
+	if(isset($_POST['submit_signup'])){
+		$username = htmlentities(mysqli_real_escape_string($conn,$_POST['email']));	
+		$password = htmlentities(mysqli_real_escape_string($conn,$_POST['pwd']));
+		$type = htmlentities(mysqli_real_escape_string($conn,$_POST['type']));
+
+
+		$LOGIN_DETAILS = "SELECT * FROM userbase WHERE username='$username' AND password='$password' AND type='$type'";
+		$query = mysqli_query($conn,$LOGIN_DETAILS);
+
+		if(mysqli_num_rows($query)>0){
+			$_SESSION['username'] = $username;
+
+			$user_from_userbase=mysqli_fetch_assoc($query);
+
+			$_SESSION['current_user'] = $user_from_userbase['type'];
+			// session_start();
+			header('location: dashboard.php');
+		}else{
+			header('location: login.php?error=userdoesnotexist');
+		}
+	}
 ?>

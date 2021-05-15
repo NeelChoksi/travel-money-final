@@ -12,6 +12,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<title>Traveller Dashboard</title>
 </head>
 <body>
@@ -33,6 +34,7 @@
 
 	<div class="messages">
 		<h1>Messages</h1>
+
 	</div>
 
 
