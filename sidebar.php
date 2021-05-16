@@ -1,6 +1,6 @@
 <?php 
 		session_start(); 
-		$context=$_SESSION['current_user'];
+		$context=$_SESSION['type'];
 
 ?>
 <!DOCTYPE html>
@@ -29,7 +29,7 @@
 		<?php 
 			if($context == 'traveller'){?>
 			<li>
-				<a>Welcome <?php echo $_SESSION['current_user']; ?></a>
+				<a>Welcome <?php echo $_SESSION['type']; ?></a>
 			</li>
 			<li>
 				<a href="dashboard.php">Traveller Dashboard</a>
@@ -52,7 +52,7 @@
 		<?php 
 		    if($context == 'customer'){?>
 			<li>
-				<a>Welcome <?php echo $_SESSION['current_user']; ?> </a>
+				<a>Welcome <?php echo $_SESSION['type']; ?> </a>
 			</li>
 			<li>
 				<a href="dashboard.php">Customer Dashboard</a>

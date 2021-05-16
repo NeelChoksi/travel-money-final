@@ -1,9 +1,8 @@
 <?php 
 		include('sidebar.php');
 
-		$context=$_SESSION['current_user'];
-		$username = $_SESSION['username'];
-
+		$context=$_SESSION['type'];
+		$username = $_SESSION['fname'].' '.$_SESSION['lname'];
 ?>	
 
 	<div class="wrapper">

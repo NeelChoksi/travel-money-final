@@ -177,6 +177,7 @@ label #cancel{
 	padding:.5rem .3rem;
 	margin:.4rem 0rem ;
 	text-align: center;
+	display: none;
 }
 
 .input input{
@@ -678,8 +679,13 @@ footer{
 	border:0;
 	background: transparent;
 }
-.fa-telegram-plane,
-.fa-arrow-left{
+
+.chat-area header .content{
+	display: flex;
+	align-items: center;
+}
+.typing-area button,
+.chat-area header .content i{
 	font-size: 1rem;
 	height: 2.5rem;
 	width: 2.5rem;
@@ -701,10 +707,13 @@ footer{
 					 0 0 0.5em  hsl(270, 83%, 3%);
 	transition: .4s ease-in-out;
 }
-,
-.fa-arrow-left:hover,
-.fa-telegram-plane:hover{
+
+.typing-area button:hover{
 	background: black;
 	color:white;
 }
 
+.chat-area header .content i:hover{
+	background:black;
+	color:white;
+}

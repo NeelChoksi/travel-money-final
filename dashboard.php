@@ -1,6 +1,6 @@
 <?php
 	include('sidebar.php');
-	$context=$_SESSION['current_user'];
+	$context=$_SESSION['type'];
 
 ?>
 

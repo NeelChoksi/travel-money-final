@@ -1,5 +1,6 @@
 const form = document.querySelector(".signup form ");
 const conitnueBtn = form.querySelector(".submit-btn input");
+const errorText = form.querySelector(".error-txt");
 
 form.onsubmit = (e) =>{
 	e.preventDefault();
@@ -12,7 +13,16 @@ conitnueBtn.onclick = () =>{
 		if(xhr.readyState === XMLHttpRequest.DONE){
 			if(xhr.status === 200){
 				let data = xhr.response;
-				console.log(data);
+				// console.log(data);
+				// str1.localeCompare(str2)
+				if(data == 1){
+					// console.log("success");
+					location.href = "dashboard.php";
+				}else{
+					errorText.textContent = data;
+
+					errorText.style.display = 'block';
+				}
 			}
 		}
 	}
