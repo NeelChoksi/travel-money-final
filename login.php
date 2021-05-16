@@ -1,6 +1,3 @@
-<?php 
-	session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,31 +92,6 @@
 	</footer>
 
 	<script src="javascript/password-show-hide.js"></script>
+	<script src="javascript/signin.js"></script>
 </body>
 </html>
-
-<?php 
-	include_once "includes/config.php";
-	
-	if(isset($_POST['submit_signup'])){
-		$username = htmlentities(mysqli_real_escape_string($conn,$_POST['email']));	
-		$password = htmlentities(mysqli_real_escape_string($conn,$_POST['pwd']));
-		$type = htmlentities(mysqli_real_escape_string($conn,$_POST['type']));
-
-
-		$LOGIN_DETAILS = "SELECT * FROM userbase WHERE username='$username' AND password='$password' AND type='$type'";
-		$query = mysqli_query($conn,$LOGIN_DETAILS);
-
-		if(mysqli_num_rows($query)>0){
-			$_SESSION['username'] = $username;
-
-			$user_from_userbase=mysqli_fetch_assoc($query);
-
-			$_SESSION['current_user'] = $user_from_userbase['type'];
-			// session_start();
-			header('location: dashboard.php');
-		}else{
-			header('location: login.php?error=userdoesnotexist');
-		}
-	}
-?>
