@@ -37,10 +37,4 @@
 	echo "all input fields are required";
 }
 
-
-
-
-
-
-
 ?>

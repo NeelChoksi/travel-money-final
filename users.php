@@ -1,8 +1,23 @@
 <?php 
 		include('sidebar.php');
 
+		if(!isset($_SESSION['unique_id'])){
+			header('location: login.php');
+		}
+
+		include_once "includes/config.php";
+
 		$context=$_SESSION['type'];
 		$username = $_SESSION['fname'].' '.$_SESSION['lname'];
+		$unique_id = $_SESSION['unique_id'];
+
+		$FETCH_USER = "SELECT * FROM users WHERE unique_id={$unique_id}";
+		$sql = mysqli_query($conn,$FETCH_USER);
+
+		if(mysqli_num_rows($sql)>0){
+			$row = mysqli_fetch_assoc($sql);
+		}
+
 
 ?>	
 	<h2 class="heading-user">Messages</h2>
@@ -11,10 +26,10 @@
 		<section class="users">
 			<header>
 				<div class="content">
-					<img src="#" alt="" />
+					<img src="includes/images/<?php echo $row['img']; ?>" alt="" />
 					<div class="details">
 						<span><?php echo $username; ?></span>
-						<p> Active now</p>
+						<p> <?php echo $row['user_status']; ?></p>
 					</div>
 				</div>	
 			</header>	
@@ -34,132 +49,6 @@
 			</div>
 
 			<div class="users-list">
-				<a href="chat.php">
-					<div class="content">
-						<img src="#" alt="" />
-						<div class="details">
-							<span>
-								Username of the user online
-							</span>
-							<p> Latest message</p>
-						</div>
-					</div>
-					<div class="status-dot">
-						<i class="fas fa-circle"></i>
-					</div>
-				</a>
-				<a href="#">
-					<div class="content">
-						<img src="#" alt="" />
-						<div class="details">
-							<span>
-								Username of the user online
-							</span>
-							<p> Latest message</p>
-						</div>
-					</div>
-					<div class="status-dot">
-						<i class="fas fa-circle"></i>
-					</div>
-				</a>
-				<a href="#">
-					<div class="content">
-						<img src="#" alt="" />
-						<div class="details">
-							<span>
-								Username of the user online
-							</span>
-							<p> Latest message</p>
-						</div>
-					</div>
-					<div class="status-dot">
-						<i class="fas fa-circle"></i>
-					</div>
-				</a>
-				<a href="#">
-					<div class="content">
-						<img src="#" alt="" />
-						<div class="details">
-							<span>
-								Username of the user online
-							</span>
-							<p> Latest message</p>
-						</div>
-					</div>
-					<div class="status-dot">
-						<i class="fas fa-circle"></i>
-					</div>
-				</a>
-				<a href="#">
-					<div class="content">
-						<img src="#" alt="" />
-						<div class="details">
-							<span>
-								Username of the user online
-							</span>
-							<p> Latest message</p>
-						</div>
-					</div>
-					<div class="status-dot">
-						<i class="fas fa-circle"></i>
-					</div>
-				</a>
-				<a href="#">
-					<div class="content">
-						<img src="#" alt="" />
-						<div class="details">
-							<span>
-								Username of the user online
-							</span>
-							<p> Latest message</p>
-						</div>
-					</div>
-					<div class="status-dot">
-						<i class="fas fa-circle"></i>
-					</div>
-				</a>
-				<a href="#">
-					<div class="content">
-						<img src="#" alt="" />
-						<div class="details">
-							<span>
-								Username of the user online
-							</span>
-							<p> Latest message</p>
-						</div>
-					</div>
-					<div class="status-dot">
-						<i class="fas fa-circle"></i>
-					</div>
-				</a>
-				<a href="#">
-					<div class="content">
-						<img src="#" alt="" />
-						<div class="details">
-							<span>
-								Username of the user online
-							</span>
-							<p> Latest message</p>
-						</div>
-					</div>
-					<div class="status-dot">
-						<i class="fas fa-circle"></i>
-					</div>
-				</a>
-				<a href="#">
-					<div class="content">
-						<img src="#" alt="" />
-						<div class="details">
-							<span>
-								Username of the user online
-							</span>
-							<p> Latest message</p>
-						</div>
-					</div>
-					<div class="status-dot">
-						<i class="fas fa-circle"></i>
-					</div>
-				</a>
 			</div>
 			
 		</section>
@@ -167,6 +56,6 @@
 	<footer>
 		Made by Neel Choksi 19BCE0990 , Vedant Karale 19BCE2050
 	</footer>
-	<!-- <script src="javascript/users.js"></script> -->
+	<script src="javascript/users.js"></script>
 </body>
 </html>
