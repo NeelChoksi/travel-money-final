@@ -1,5 +1,10 @@
 <?php 
 		include('sidebar.php');
+		if(!isset($_SESSION['unique_id'])){
+			header('location: login.php');
+		}
+
+		include_once "includes/config.php";
 
 		$context=$_SESSION['type'];
 		$username = $_SESSION['fname'].' '.$_SESSION['lname'];
@@ -8,12 +13,22 @@
 	<div class="wrapper">
 		<section class="chat-area">
 			<header>
+				<?php 
+					$id_of_clicked = mysqli_real_escape_string($conn,$_GET['user_id']);
+					$FETCH_USER = "SELECT * FROM users WHERE unique_id={$id_of_clicked}";
+					$sql = mysqli_query($conn,$FETCH_USER);
+
+					if(mysqli_num_rows($sql)>0){
+						$row = mysqli_fetch_assoc($sql);
+					}
+				 ?>
 				<div class="content">
 					<a href="users.php" ><i class="fas fa-arrow-left"></i></a>
-					<img src="#" alt="" />
+					<img src="includes/images/<?php echo $row['img']; ?>" alt="" />
+					
 					<div class="details">
-						<span>Username of other person</span>
-						<p> Active now</p>
+						<span><?php echo $row['first_name']." ".$row['last_name']; ?></span>
+						<p> <?php echo $row['user_status']; ?></p>
 					</div>
 				</div>	
 			</header>	
@@ -162,6 +177,7 @@
 	<footer>
 		Made by Neel Choksi 19BCE0990 , Vedant Karale 19BCE2050
 	</footer>
+	<script src="javascript/chat.js"></script>
 
 </body>
 </html>

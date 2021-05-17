@@ -28,7 +28,7 @@
 				<div class="content">
 					<img src="includes/images/<?php echo $row['img']; ?>" alt="" />
 					<div class="details">
-						<span><?php echo $username; ?></span>
+						<span><?php echo $row['first_name']." ".$row['last_name']; ?></span>
 						<p> <?php echo $row['user_status']; ?></p>
 					</div>
 				</div>	
