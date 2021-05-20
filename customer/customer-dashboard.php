@@ -13,27 +13,21 @@
 			<p>
 				View posts from the travellers.
 			</p>
-			<a class="proceed">
+			<a  href="viewposts.php" class="proceed">
 				View Posts
 			</a>
 		</div>
 
-		<div class="card">
-			<h1>Current Order </h1>
-			<p>
-				Modify and view the status of your current order.
-			</p>
-			<a class="proceed">
-				Current Order
-			</a>
-		</div>
+
 
 		<div class="card">
 			<h1>Orders</h1>
 			<p>
+				Modify and view the status of your current order.
+				&
 				View all your previous orders.
 			</p>
-			<a class="proceed">
+			<a href="vieworders.php" class="proceed">
 				Orders
 			</a>
 		</div>

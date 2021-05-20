@@ -39,10 +39,10 @@
 				<!-- Repeat: posts, orders, messages-->
 			</li>
 			<li>
-				<a href="#">Traveller Posts</a>
+				<a  href="viewposts.php">Traveller Posts</a>
 			</li>
 			<li>
-				<a href="#">Traveller Orders</a>
+				<a href="vieworders.php">Traveller Orders</a>
 			</li>
 			<li>
 				<a href="users.php">Traveller Messages</a>
@@ -62,10 +62,10 @@
 				<!-- Repeat: posts, orders, messages-->
 			</li>
 			<li>
-				<a href="#">Customer Posts</a>
+				<a  href="viewposts.php">Traveller Posts</a>
 			</li>
 			<li>
-				<a href="#">Customer Orders</a>
+				<a href="vieworders.php">Customer Orders</a>
 			</li>
 			<li>
 				<a href="users.php">Customer Messages</a>

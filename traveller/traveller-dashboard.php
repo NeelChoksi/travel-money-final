@@ -15,23 +15,14 @@
 			</a>
 		</div>
 
-		<div class="card">
-			<h1>Current Order </h1>
-			<p>
-				View and modify the current status of the order
-			</p>
-			<a class="proceed">
-				Current Order
-			</a>
 
-		</div>
 
 		<div class="card">
 			<h1>Posts</h1>
 			<p>
 				View all previous posts 
 			</p>
-			<a class="proceed">
+			<a href="viewposts.php" class="proceed">
 				View Posts
 			</a>
 		</div>
@@ -39,9 +30,11 @@
 		<div class="card">
 			<h1>Orders</h1>
 			<p>
+				View and modify the current status of the order
+				&	
 				View all previous orders
 			</p>
-			<a class="proceed">
+			<a href="vieworders.php" class="proceed">
 				Orders
 			</a>
 		</div>

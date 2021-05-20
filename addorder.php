@@ -29,7 +29,12 @@
 					This is the error message
 				</div>
 				<div class="traveller_posts_fetched">
-					
+					Display posts of the traveller selected in the chat
+					<?php 
+						$traveller_id=$_GET['traveller_id'];
+						echo $traveller_id;
+					 ?>
+
 				</div>
 				<div class="name-details">
 					<div class="field input">
