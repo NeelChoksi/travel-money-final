@@ -1,6 +1,9 @@
 <?php 
-		include('sidebar.php');
-	$context=$_SESSION['current_user'];
+	include('sidebar.php');
+	if(!isset($_SESSION['unique_id'])){
+			header('location: login.php');
+	}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +27,9 @@
 			<form action="#">
 				<div class="error-txt">
 					This is the error message
+				</div>
+				<div class="traveller_posts_fetched">
+					
 				</div>
 				<div class="name-details">
 					<div class="field input">
@@ -72,7 +78,7 @@
 					</div>
 				</div>
 
-					<div class="field submit-btn">
+					<div class="field submit_order">
 						<input type="submit" name="submit_order" value="Place Order" >
 					</div>
 

@@ -1,8 +1,5 @@
 <?php
 	
-
-
-
 ?>
 
 	<h2 class="heading-user">Traveller Dashboard</h2>
@@ -13,7 +10,7 @@
 			<p>
 				Create a post about your travel plan to gain orders.
 			</p>
-			<a class="proceed">
+			<a href="addpost.php" class="proceed traveller_addpost">
 				Create Post
 			</a>
 		</div>
@@ -58,7 +55,6 @@
 		</div>		
 	</div>
 	
-
 
 
 </body>

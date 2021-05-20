@@ -78,7 +78,7 @@
 							echo "file not inserted in server";
 						}
 					}else{
-						echo"enter an image type file- jpeg,jpg,png for profile pdf for aadhar ";
+						echo"jpeg,jpg,png for profile image and pdf for aadhar card  ";
 					}
 				}else{
 					echo "upload image and aadhar";

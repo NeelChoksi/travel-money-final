@@ -7,4 +7,5 @@ const submitbtn = document.querySelector('.typing-area button');
 
 submitbtn.onclick = () =>{
 	console.log('hi');
+	
 }

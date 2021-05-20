@@ -163,7 +163,7 @@
 			</div>	
 			<?php if($context=='customer'){?>
 				<div class="add-order">
-					<a href="addorder.php">Place Order</a>
+					<a href="addorder.php?traveller_id=$id_of_clicked">Place Order</a>
 				</div>
 
 			<?php } ?>
