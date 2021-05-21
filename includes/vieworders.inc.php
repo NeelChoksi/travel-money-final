@@ -3,59 +3,111 @@
 	include_once "config.php";
 	$context=$_SESSION['type'];
 	$output = "";
+	$unique_id = $_SESSION['unique_id'];
 
 
 	if($context == 'traveller'){
-		$FETCH_ALL_CUSTOMERS="SELECT * FROM posts WHERE type='customer'";
-		$sql = mysqli_query($conn,$FETCH_ALL_CUSTOMERS)	;
+		$FETCH_ALL_ACITVE_ORDERS="SELECT * FROM orders LEFT JOIN users ON orders.customer_id=users.unique_id WHERE traveller_id={$unique_id} ;";
+		$sql = mysqli_query($conn,$FETCH_ALL_ACITVE_ORDERS)	;
 
 		if(mysqli_num_rows($sql) ==0){
-			echo "no customers in the db";
+			echo "no orders in the db for this traveller.";
 		}else{
 			while($row=mysqli_fetch_assoc($sql)){
 				$output .='
-					<a href="chat.php?user_id='.$row['unique_id'].'">
-						<div class="content">
-							<img src="includes/images/'. $row['img'] . '" alt="profile img" />
-							<div class="details">
-								<span>
-									'. $row['first_name']." ".$row['last_name'] . '
-								</span>
-								<p> Latest message</p>
-							</div>
-						</div>
-						<div class="status-dot">
-							<i class="fas fa-circle"></i>
-						</div>
-					</a>		
+					<div class="card" >
+					<h1>Order#'. $row['order_no'] . '</h1>
+					<a class="proceed" href="chat.php?user_id='. $row['customer_id'] .' ">
+						Customer: '. $row['first_name']." ".$row['last_name'] . '
+						
+					</a>
+					<p>
+						Pickup:
+						'. $row['pickup_address']." (".$row['pickup_date'].")" . '
+
+					</p>
+					<p>
+						Deliver:
+						'. $row['delivery_address']." (".$row['delivery_date'].")" . '
+
+					</p>
+					<p>
+						Size: h x w x d 
+						'. $row['height']."(cm)x".$row['width']."(cm)x".$row['depth']."(cm)"  .'
+
+					</p>
+					<p>
+						Price:Rs.
+						'. $row['price'] . '
+
+					</p>
+					<p>
+						Weight(in kg):
+						'. $row['weight'] . '
+
+					</p>
+					<p class="'. $row['order_status'] . '">
+						Status:
+						'. $row['order_status'] . '
+					</p>
+
+					<a class="proceed">
+						Update Status
+					</a>
+				</div>
 				';
 			}
 		}
 		echo $output;
 
 	}else if($context == 'customer'){
-		$FETCH_ALL_TRAVELLERS = "SELECT * FROM users WHERE type='traveller'";
-		$sql2= mysqli_query($conn,$FETCH_ALL_TRAVELLERS);
-		if(mysqli_num_rows($sql2) ==0){
-			echo "no travellers in the db";
+		$FETCH_ALL_ACITVE_ORDERS="SELECT * FROM orders LEFT JOIN users ON orders.traveller_id=users.unique_id WHERE customer_id={$unique_id};";
+		$sql = mysqli_query($conn,$FETCH_ALL_ACITVE_ORDERS)	;
+		if(mysqli_num_rows($sql) ==0){
+			echo "no orders in the db";
 		}else{
-			while($row=mysqli_fetch_assoc($sql2)){
+			while($row=mysqli_fetch_assoc($sql)){
 				$output .='
-					<a href="chat.php">
-						<div class="content">
-							<img src="includes/images/'. $row['img'] . '" alt="profile img" />
-							<div class="details">
-								<span>
-									'. $row['first_name'] . '." ".'. $row['last_name'] . '
-								</span>
-								<p> Latest message</p>
-							</div>
-						</div>
-						<div class="status-dot">
-							<i class="fas fa-circle"></i>
-						</div>
-					</a>
+					<div class="card" >
+					<h1>Order#'. $row['order_no'] . '</h1>
+					<a class="proceed" href="chat.php?user_id='. $row['traveller_id'] .' ">
+						Traveller: '. $row['first_name']." ".$row['last_name'] . '
 						
+					</a>
+					<p>
+						Pickup:
+						'. $row['pickup_address']." (".$row['pickup_date'].")" . '
+
+					</p>
+					<p>
+						Deliver:
+						'. $row['delivery_address']." (".$row['delivery_date'].")" . '
+
+					</p>
+					<p>
+						Size: h x w x d 
+						'. $row['height']."(cm)x".$row['width']."(cm)x".$row['depth']."(cm)"  .'
+
+					</p>
+					<p>
+						Price:Rs.
+						'. $row['price'] . '
+
+					</p>
+					<p>
+						Weight(in kg):
+						'. $row['weight'] . '
+
+					</p>
+					<p class="'. $row['order_status'] . '">
+						Status:
+						'. $row['order_status'] . '
+					</p>
+
+					<a class="proceed">
+						Update Status
+					</a>
+				</div>
 				';
 			}
 		}

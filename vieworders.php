@@ -6,14 +6,8 @@
 			header('location: login.php');
 		}
 ?>
-<?php 
-	if($context=="traveller"){?>
-	<h2 class="heading-user">My Posts</h2>
-
-	<?php }else{ ?>
-	<h2 class="heading-user">Traveller Posts</h2>
 	
-	<?php } ?>	
+	<h2 class="heading-user">My orders</h2>
 
 	<div class="wrapper">
 			<div class="search">
@@ -36,159 +30,47 @@
 
 		<?php if($context=="traveller"){?>
 
-			<h2 class="heading-user">Active Orders</h2>
-				<div id="posts_display_box" class="functional-cards">
-					<div class="card" id=<?php echo $row['post_id']; ?> >
-						<h1>Order ID</h1>
-						<p>
-							Customer Name
-							Message Link
-						</p>
-						<p>
-							Customer ID
-						</p>
-						<p>
-							Start Location(Start Date): 
-						</p>
-						<p>
-							End Location(End Date):
-						</p>
-						<p>
-							Size: l x w x h 
-						</p>
-						<p>
-							Price:
-						</p>
-						<p>
-							Weight(in kg):
-						</p>
-						<p>
-							Status:
-						</p>
-
-						<a class="proceed">
-							Update Status
-						</a>
-					</div>
-				</div>	
-			<h2 class="heading-user">Previous Orders</h2>
-				<div id="posts_display_box" class="functional-cards">
-					<div class="card" id=<?php echo $row['post_id']; ?> >
-						<h1>Order ID</h1>
-						<p>
-							Customer Name
-							Message Link
-						</p>
-						<p>
-							Customer ID
-						</p>
-						<p>
-							Start Location(Start Date): 
-						</p>
-						<p>
-							End Location(End Date):
-						</p>
-						<p>
-							Size: l x w x h 
-						</p>
-						<p>
-							Price:
-						</p>
-						<p>
-							Weight(in kg):
-						</p>
-						<p>
-							Status:Delivered
-						</p>
-
-						
-					</div>
-				</div>
-
+			<h2 class="heading-user">Orders</h2>
+			<div id="orders_display_box" class="functional-cards">
 				
+			</div>	
+		<?php }else{ ?>
 
-				<?php }else{ ?>
-				<div class="functional-cards">		
-
-			<h2 class="heading-user">Active Orders</h2>
-				<div id="posts_display_box" class="functional-cards">
-					<div class="card" id=<?php echo $row['post_id']; ?> >
-						<h1>Order ID</h1>
-						<p>
-							Traveller Name
-							Message Link
-						</p>
-						<p>
-							Traveller ID
-							Message Link
-						</p>
-						<p>
-							Start Location(Start Date): 
-						</p>
-						<p>
-							End Location(End Date):
-						</p>
-						<p>
-							Size: l x w x h 
-						</p>
-						<p>
-							Price:
-						</p>
-						<p>
-							Weight(in kg):
-						</p>
-						<p>
-							Status:
-						</p>
-
-						<a class="proceed">
-							Update Status
-						</a>
-					</div>
-				</div>	
-			<h2 class="heading-user">Previous Orders</h2>
-				<div id="posts_display_box" class="functional-cards">
-					<div class="card" id=<?php echo $row['post_id']; ?> >
-						<h1>Order ID</h1>
-						<p>
-							Traveller Name
-							Message Link
-						</p>
-						<p>
-							Traveller ID
-							Message Link
-						</p>
-						<p>
-							Start Location(Start Date): 
-						</p>
-						<p>
-							End Location(End Date):
-						</p>
-						<p>
-							Size: l x w x h 
-						</p>
-						<p>
-							Price:
-						</p>
-						<p>
-							Weight(in kg):
-						</p>
-						<p>
-							Status:Delivered
-						</p>
-
+			<h2 class="heading-user">Orders</h2>
+				<div id="orders_display_box" class="functional-cards">
 					
-					</div>
-				</div>
+				</div>	
+			
 				<?php } ?>					
 		
 
-			</div>
 			
 	</div>
 	<footer>
 		Made by Neel Choksi 19BCE0990 , Vedant Karale 19BCE2050
 	</footer>
-	<script src="javascript/vieworders.js"></script>
+	<script>
+		
+
+const ordersList = document.querySelector("#orders_display_box");
+
+
+window.addEventListener("load", ()=>{
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET","includes/vieworders.inc.php",true);//async = true
+	xhr.onload = () =>{
+		if(xhr.readyState === XMLHttpRequest.DONE){
+			if(xhr.status === 200){
+				let data = xhr.response;
+				 // console.log(data);
+				ordersList.innerHTML = data;
+				
+			}
+		}
+	}
+	xhr.send();
+});
+
+	</script>
 </body>
 </html>
