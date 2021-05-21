@@ -718,3 +718,9 @@ footer{
 	color:white;
 }
 
+.ActivePost{
+	display: flex;
+	background: green;
+	color:white;
+	border-radius: .4rem;
+}

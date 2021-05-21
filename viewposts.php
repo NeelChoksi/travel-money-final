@@ -36,78 +36,50 @@
 
 		<?php if($context=="traveller"){?>
 
-			<h2 class="heading-user">Active Posts</h2>
-				<div id="posts_display_box" class="functional-cards">
-					<div class="card" id=<?php echo $row['post_id']; ?> >
-						<h1>Post ID</h1>
-						<p>
-							Start Location(Start Date): 
-						</p>
-						<p>
-							End Location(End Date):
-						</p>
-						<p>
-							Proposed Price:
-						</p>
-						<p>
-							Available Weight(in kg):
-						</p>
-						<a class="proceed" style="border-color: red; color:red; background: red; color:#fff;">
-							Delete Post
-						</a>
-					</div>
+			<h2 class="heading-user">Your Posts</h2>
+				<div id="traveller_active_posts_display_box" class="functional-cards" >
+
+					
 				</div>	
-			<h2 class="heading-user">Previous posts</h2>
-				<div id="posts_display_box" class="functional-cards">
-					<div class="card" id=<?php echo $row['post_id']; ?> >
-						<h1>Post ID</h1>
-						<p>
-							Start Location(Start Date): 
-						</p>
-						<p>
-							End Location(End Date):
-						</p>
-						<p>
-							Proposed Price:
-						</p>
-						<p>
-							Available Weight(in kg):
-						</p>
-						
-					</div>
-				</div>
+		<?php }else{ ?>
+			<h2 class="heading-user">Traveller Posts</h2>
+
+			<div id="traveller_active_posts_display_box" class="functional-cards">		
+							
+			</div>
+
+				<?php } ?>					
 
 				
-
-				<?php }else{ ?>
-				<div class="functional-cards">		
-				<div class="card" id=<?php echo $post_id; ?> >
-					<h1>Name Of Traveller</h1>
-					<p>
-						Start Location(Start Date): 
-					</p>
-					<p>
-						End Location(End Date):
-					</p>
-					<p>
-						Proposed Price:
-					</p>
-					<p>
-						Available Weight(in kg):
-					</p>
-					<a href="chat.php?user_id=<?php echo $row['unique_id']; ?> " class="proceed traveller_addpost">
-						Contact Traveller
-					</a>
-				</div>			
-				<?php } ?>					
-		
-
-			</div>
-			
 	</div>
 	<footer>
 		Made by Neel Choksi 19BCE0990 , Vedant Karale 19BCE2050
 	</footer>
-	<script src="javascript/viewposts.js"></script>
+	<script>
+		
+
+const postsList = document.querySelector("#traveller_active_posts_display_box");
+
+const loadActiveTravellerBTN =document.querySelector("#loadActiveTraveller");
+
+// console.log(postsList);
+// postsList.textContent="hi";
+
+window.addEventListener("load", ()=>{
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET","includes/viewposts.inc.php",true);//async = true
+	xhr.onload = () =>{
+		if(xhr.readyState === XMLHttpRequest.DONE){
+			if(xhr.status === 200){
+				let data = xhr.response;
+				 // console.log(data);
+				postsList.innerHTML = data;
+				
+			}
+		}
+	}
+	xhr.send();
+});
+	</script>
 </body>
 </html>

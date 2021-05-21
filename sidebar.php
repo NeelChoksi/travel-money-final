@@ -2,6 +2,9 @@
 		
 		session_start(); 
 		$context=$_SESSION['type'];
+		$username = $_SESSION['fname'].' '.$_SESSION['lname'];
+
+
 
 ?>
 <!DOCTYPE html>
@@ -29,6 +32,9 @@
 
 		<?php 
 			if($context == 'traveller'){?>
+			<li>
+				<a><?php echo $username; ?></a>
+			</li>
 			<li>
 				<a>Welcome <?php echo $_SESSION['type']; ?></a>
 			</li>
