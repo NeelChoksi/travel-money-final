@@ -41,12 +41,12 @@
 		}else{
 			while($row=mysqli_fetch_assoc($sql2)){
 				$output .='
-					<a href="chat.php">
+					<a href="chat.php?user_id='.$row['unique_id'].'">
 						<div class="content">
 							<img src="includes/images/'. $row['img'] . '" alt="profile img" />
 							<div class="details">
 								<span>
-									'. $row['first_name'] . '." ".'. $row['last_name'] . '
+									'. $row['first_name']." ".$row['last_name'] . '
 								</span>
 								<p> Latest message</p>
 							</div>

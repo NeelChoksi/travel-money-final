@@ -108,8 +108,6 @@
 					<div class="link">
 						Already have an account? <a href="login.php">Login here</a>
 					</div>
-
-				
 			</form>
 		</section>
 	</div>

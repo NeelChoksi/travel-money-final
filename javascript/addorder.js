@@ -7,6 +7,9 @@ form.onsubmit = (e) =>{
 }
 
 conitnueBtn.onclick = () =>{
+
+	// console.log('hi');
+
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST","includes/addorder.inc.php",true);//async = true
 	xhr.onload = () =>{
