@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 20, 2021 at 08:21 AM
+-- Generation Time: May 21, 2021 at 04:01 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.28
 
@@ -20,6 +20,40 @@ SET time_zone = "+00:00";
 --
 -- Database: `travelmoneyfinal`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `order_no` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `traveller_id` int(11) NOT NULL,
+  `pickup_address` varchar(255) NOT NULL,
+  `delivery_address` varchar(255) NOT NULL,
+  `pickup_date` date NOT NULL,
+  `delivery_date` date NOT NULL,
+  `price` int(11) NOT NULL,
+  `fragility` varchar(11) NOT NULL,
+  `weight` int(11) NOT NULL,
+  `height` int(11) NOT NULL,
+  `width` int(11) NOT NULL,
+  `depth` int(11) NOT NULL,
+  `order_status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_no`, `post_id`, `customer_id`, `traveller_id`, `pickup_address`, `delivery_address`, `pickup_date`, `delivery_date`, `price`, `fragility`, `weight`, `height`, `width`, `depth`, `order_status`) VALUES
+(1, 4, 1154232350, 1123, 'addr1', 'addr2', '2021-05-22', '2021-05-27', 100, 'Fragile', 2, 30, 30, 30, 'To be confirmed by Traveller'),
+(2, 4, 1154232350, 1123, 'addr1', 'addr2', '2021-05-22', '2021-05-27', 100, 'Fragile', 2, 30, 30, 30, 'To be confirmed by Traveller'),
+(3, 5, 1154232350, 1123, 'addr1', 'addr2', '2021-05-22', '2021-05-22', 100, 'Not Fragile', 2, 30, 30, 30, 'To be confirmed by Traveller'),
+(4, 5, 1154232350, 1123, 'addr1', 'addr2', '2021-05-22', '2021-05-25', 100, 'Fragile', 2, 30, 30, 30, 'To be confirmed by Traveller');
 
 -- --------------------------------------------------------
 
@@ -44,9 +78,8 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`post_id`, `unique_id`, `start_location`, `end_location`, `start_date`, `end_date`, `weight`, `proposed_price`, `post_status`) VALUES
-(4, 1123, 'Mumbai', 'Pune', '2020-02-02', '2020-02-04', 2, 300, 'Active'),
-(5, 1123, 'Mumbai', 'Pune', '2022-02-02', '2022-02-04', 2, 200, 'Active'),
-(6, 1597690749, 'Mumbai', 'Pune', '1970-01-01', '1970-01-01', 2, 200, 'active'),
+(4, 1123, 'Mumbai', 'Pune', '2020-02-02', '2020-02-04', 2, 300, 'Not Active'),
+(5, 1123, 'Mumbai', 'Pune', '2022-02-02', '2022-02-04', 2, 200, 'Not Active'),
 (7, 1597690749, 'Mumbai', 'Pune', '2021-05-20', '2021-05-21', 2, 233, 'Active');
 
 -- --------------------------------------------------------
@@ -90,6 +123,15 @@ INSERT INTO `users` (`unique_id`, `type`, `first_name`, `last_name`, `email`, `p
 --
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`order_no`),
+  ADD KEY `ID_TRAVELLER` (`traveller_id`),
+  ADD KEY `ID_CUSTOMER` (`customer_id`),
+  ADD KEY `ID_POST` (`post_id`);
+
+--
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
@@ -107,6 +149,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `order_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
@@ -115,6 +163,14 @@ ALTER TABLE `posts`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `ID_CUSTOMER` FOREIGN KEY (`customer_id`) REFERENCES `users` (`unique_id`),
+  ADD CONSTRAINT `ID_POST` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`),
+  ADD CONSTRAINT `ID_TRAVELLER` FOREIGN KEY (`traveller_id`) REFERENCES `users` (`unique_id`);
 
 --
 -- Constraints for table `posts`
