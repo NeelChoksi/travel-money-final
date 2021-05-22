@@ -17,7 +17,7 @@
 				$output .='
 					<div class="card">
 						<h1>
-								'. $row['post_id'] . '
+								Post#'. $row['post_id'] . '
 
 						<span class='. $row['post_status']."Post" . '>
 								'. $row['post_status'] . '
@@ -25,19 +25,22 @@
 						</h1>
 						<p>
 							'. $row['start_location']." (".$row['start_date'].")" . '
-							Start Location(Start Date): 
+							
+						</p>
+						<p>
+							TO 
 						</p>
 						<p>
 							'. $row['end_location']." (".$row['end_date'].")" . '
-							End Location(End Date):
+							
 						</p>
 						<p>
-							'. $row['proposed_price']. '
-							Proposed Price:
+							Rs.'. $row['proposed_price']. '
+							
 						</p>
 						<p>
 							'. $row['weight']."kg" . '
-							Available Weight(in kg):
+							
 						</p>
 						<a class="proceed" style="border-color: red; color:red; background: red; color:#fff;" href="includes/deletepost.inc.php?post_id='. $row['post_id'] .'">
 							Deactivate Post

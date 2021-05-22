@@ -21,7 +21,7 @@
 		?>	
 	</div>
 	<div class="wrapper">
-			<div class="search">
+			<!-- <div class="search">
 				<span class="text">
 					Select <?php if($context=='customer'){
 						echo 'Traveller';
@@ -35,7 +35,7 @@
 					<button><i class="fas fa-search"></i></button>	
 				</div>
 				
-			</div>
+			</div> -->
 
 			
 

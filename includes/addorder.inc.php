@@ -16,7 +16,7 @@
 	$Parcel_width=mysqli_real_escape_string($conn,$_POST['Parcel_width']);
 	$Parcel_depth=mysqli_real_escape_string($conn,$_POST['Parcel_depth']);
 	
-	$status= "To be confirmed by Traveller";
+	$status=1;
 
 	// echo "$customer_id";
 	// echo "\n";

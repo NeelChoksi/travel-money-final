@@ -723,6 +723,7 @@ footer{
 	background: green;
 	color:white;
 	border-radius: .4rem;
+	text-align: center;
 }
 
 
@@ -740,3 +741,5 @@ color: #f15025 ;
 	margin:.4rem 0rem ;
 	text-align: center;	
 }
+
+

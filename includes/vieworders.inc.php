@@ -7,7 +7,7 @@
 
 
 	if($context == 'traveller'){
-		$FETCH_ALL_ACITVE_ORDERS="SELECT * FROM orders LEFT JOIN users ON orders.customer_id=users.unique_id AND traveller_id={$unique_id} LEFT JOIN orderstatus ON orders.order_status=orderstatus.id  ;";
+		$FETCH_ALL_ACITVE_ORDERS="SELECT * FROM orders LEFT JOIN users ON orders.customer_id=users.unique_id AND traveller_id={$unique_id} LEFT JOIN orderstatus ON orders.order_status=orderstatus.id ORDER BY order_no DESC;";
 		$sql = mysqli_query($conn,$FETCH_ALL_ACITVE_ORDERS)	;
 
 		if(mysqli_num_rows($sql) ==0){
@@ -64,7 +64,7 @@
 		echo $output;
 
 	}else if($context == 'customer'){
-		$FETCH_ALL_ACITVE_ORDERS="SELECT * FROM orders LEFT JOIN users ON orders.traveller_id=users.unique_id AND customer_id={$unique_id} LEFT JOIN orderstatus ON orders.order_status=orderstatus.id;";
+		$FETCH_ALL_ACITVE_ORDERS="SELECT * FROM orders LEFT JOIN users ON orders.traveller_id=users.unique_id AND customer_id={$unique_id} LEFT JOIN orderstatus ON orders.order_status=orderstatus.id ORDER BY order_no DESC;";
 		$sql = mysqli_query($conn,$FETCH_ALL_ACITVE_ORDERS)	;
 		if(mysqli_num_rows($sql) ==0){
 			echo "no orders in the db";
