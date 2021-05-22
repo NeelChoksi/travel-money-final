@@ -39,8 +39,8 @@
 							'. $row['weight']."kg" . '
 							Available Weight(in kg):
 						</p>
-						<a class="proceed" style="border-color: red; color:red; background: red; color:#fff;">
-							Delete Post
+						<a class="proceed" style="border-color: red; color:red; background: red; color:#fff;" href="includes/deletepost.inc.php?post_id='. $row['post_id'] .'">
+							Deactivate Post
 						</a>
 					</div>
 				';

@@ -8,7 +8,18 @@
 ?>
 	
 	<h2 class="heading-user">My orders</h2>
+	<div class="error-txt-orders">
+		<?php
+			if(isset($_GET['error'])){
 
+			$error = $_GET['error'];
+			if($error!='none'){
+				echo $error;
+			}
+		} 
+
+		?>	
+	</div>
 	<div class="wrapper">
 			<div class="search">
 				<span class="text">

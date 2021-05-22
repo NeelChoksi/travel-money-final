@@ -731,3 +731,12 @@ footer{
 
 }
 
+.error-txt-orders{
+color: #f15025 ;
+	font-weight: 600;
+	background: #fcdcd3;
+	border-radius: .3rem;
+	padding:.5rem .3rem;
+	margin:.4rem 0rem ;
+	text-align: center;	
+}

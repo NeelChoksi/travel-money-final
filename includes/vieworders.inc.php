@@ -7,7 +7,7 @@
 
 
 	if($context == 'traveller'){
-		$FETCH_ALL_ACITVE_ORDERS="SELECT * FROM orders LEFT JOIN users ON orders.customer_id=users.unique_id WHERE traveller_id={$unique_id} ;";
+		$FETCH_ALL_ACITVE_ORDERS="SELECT * FROM orders LEFT JOIN users ON orders.customer_id=users.unique_id AND traveller_id={$unique_id} LEFT JOIN orderstatus ON orders.order_status=orderstatus.id  ;";
 		$sql = mysqli_query($conn,$FETCH_ALL_ACITVE_ORDERS)	;
 
 		if(mysqli_num_rows($sql) ==0){
@@ -44,14 +44,17 @@
 					<p>
 						Weight(in kg):
 						'. $row['weight'] . '
-
 					</p>
-					<p class="'. $row['order_status'] . '">
+					<p class="Status'. $row['id'] . '">
 						Status:
-						'. $row['order_status'] . '
+						'. $row['state'] . '
+					</p>
+					<p class="'. $row['id'] . '">
+						Action to be taken:
+						'. $row['action'] . '
 					</p>
 
-					<a class="proceed">
+					<a class="proceed" href="includes/updateorder.inc.php?order_no='.$row['order_no'].'&order_status='. $row['id'] . '">
 						Update Status
 					</a>
 				</div>
@@ -61,7 +64,7 @@
 		echo $output;
 
 	}else if($context == 'customer'){
-		$FETCH_ALL_ACITVE_ORDERS="SELECT * FROM orders LEFT JOIN users ON orders.traveller_id=users.unique_id WHERE customer_id={$unique_id};";
+		$FETCH_ALL_ACITVE_ORDERS="SELECT * FROM orders LEFT JOIN users ON orders.traveller_id=users.unique_id AND customer_id={$unique_id} LEFT JOIN orderstatus ON orders.order_status=orderstatus.id;";
 		$sql = mysqli_query($conn,$FETCH_ALL_ACITVE_ORDERS)	;
 		if(mysqli_num_rows($sql) ==0){
 			echo "no orders in the db";
@@ -99,12 +102,15 @@
 						'. $row['weight'] . '
 
 					</p>
-					<p class="'. $row['order_status'] . '">
+					<p class="Status'. $row['id'] . '">
 						Status:
-						'. $row['order_status'] . '
+						'. $row['state'] . '
 					</p>
-
-					<a class="proceed">
+					<p>
+						Action to be taken:
+						'. $row['action'] . '
+					</p>
+					<a class="proceed" href="includes/updateorder.inc.php?order_no='. $row['order_no'] . '&order_status='. $row['id'] . '">
 						Update Status
 					</a>
 				</div>
