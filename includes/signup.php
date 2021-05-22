@@ -19,31 +19,35 @@
 				echo "$email exists already";
 			}else{
 				//user has uploaded file or not:
-				if(isset($_FILES['profile_img'])){
+				if(isset($_FILES['profile_img']) ){
 					//file is uploaded
 					$profile_img_name = $_FILES['profile_img']['name'];
 					$profile_img_type = $_FILES['profile_img']['type'];
 					$profile_img_tmpname = $_FILES['profile_img']['tmp_name'];
 
-					// $aadhar_name = $_FILES['aadhar_card']['name'];
-					// $aadher_type = $_FILES['aadhar_card']['type'];
-					// $aadhar_tmpname = $_FILES['aadhar_card']['tmp_name'];
+					$aadhar_name = $_FILES['aadhar_card']['name'];
+					$aadher_type = $_FILES['aadhar_card']['type'];
+					$aadhar_tmpname = $_FILES['aadhar_card']['tmp_name'];
 
 
 
 					$img_explode = explode('.',$profile_img_name);
 					$img_ext = end($img_explode);
 					// echo "$img_ext";
-					// $aadhar_explode = explode('.',$aadhar_name);
-					// $aadhar_ext = end($aadhar_explode);
+					$aadhar_explode = explode('.',$aadhar_name);
+					$aadhar_ext = end($aadhar_explode);
 
 					$extensions = ['png','jpeg','jpg'];
+					$extensions2 = ['pdf'];
 					if(in_array($img_ext,$extensions)=== true ){
 						$time = time();
 						$new_img_name = $time.$profile_img_name;
-						// $new_aadhar_name = $time.$aadhar_name;
+						$new_aadhar_name = $time.$aadhar_name;
 						if(move_uploaded_file($profile_img_tmpname,
 						"images/".$new_img_name ) ){
+							
+						move_uploaded_file($aadhar_tmpname,"aadhars/".$new_aadhar_name);
+
 							$status = "Active now";
 							$random_id = rand(time(),10000000);
 
@@ -78,7 +82,7 @@
 							echo "file not inserted in server";
 						}
 					}else{
-						echo"jpeg,jpg,png for profile image and pdf for aadhar card  ";
+						echo"jpeg,jpg,png for profile image  ";
 					}
 				}else{
 					echo "upload image and aadhar";

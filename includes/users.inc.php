@@ -21,7 +21,7 @@
 								<span>
 									'. $row['first_name']." ".$row['last_name'] . '
 								</span>
-								<p> Latest message</p>
+								<p>'. $row['user_status'].' </p>
 							</div>
 						</div>
 						<div class="status-dot">
@@ -48,7 +48,7 @@
 								<span>
 									'. $row['first_name']." ".$row['last_name'] . '
 								</span>
-								<p> Latest message</p>
+								<p> '. $row['user_status'] .'</p>
 							</div>
 						</div>
 						<div class="status-dot">
