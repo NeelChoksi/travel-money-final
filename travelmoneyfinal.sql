@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 21, 2021 at 04:01 PM
+-- Generation Time: May 22, 2021 at 01:42 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.28
 
@@ -20,6 +20,38 @@ SET time_zone = "+00:00";
 --
 -- Database: `travelmoneyfinal`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `msg_id` int(11) NOT NULL,
+  `sender_id` int(255) NOT NULL,
+  `receiver_id` int(255) NOT NULL,
+  `message` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`msg_id`, `sender_id`, `receiver_id`, `message`) VALUES
+(1, 1154232350, 1123, 'hello'),
+(2, 1123, 1154232350, 'hello'),
+(3, 1123, 1154232350, 'hello'),
+(4, 1154232350, 1123, 'hello'),
+(5, 1123, 1154232350, 'Hello again from neel'),
+(6, 1154232350, 1123, 'your chats are not being displayed'),
+(7, 1123, 1154232350, 'now?'),
+(8, 1154232350, 1123, 'yes its working'),
+(9, 1154232350, 1123, 'HI'),
+(10, 1123, 1154232350, 'how are you'),
+(11, 1123, 1154232350, 'hi'),
+(12, 1154232350, 1123, 'is it scrolling for you?'),
+(13, 1123, 1154232350, 'yes it is');
 
 -- --------------------------------------------------------
 
@@ -42,7 +74,7 @@ CREATE TABLE `orders` (
   `height` int(11) NOT NULL,
   `width` int(11) NOT NULL,
   `depth` int(11) NOT NULL,
-  `order_status` varchar(255) NOT NULL
+  `order_status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -50,10 +82,34 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_no`, `post_id`, `customer_id`, `traveller_id`, `pickup_address`, `delivery_address`, `pickup_date`, `delivery_date`, `price`, `fragility`, `weight`, `height`, `width`, `depth`, `order_status`) VALUES
-(1, 4, 1154232350, 1123, 'addr1', 'addr2', '2021-05-22', '2021-05-27', 100, 'Fragile', 2, 30, 30, 30, 'To be confirmed by Traveller'),
-(2, 4, 1154232350, 1123, 'addr1', 'addr2', '2021-05-22', '2021-05-27', 100, 'Fragile', 2, 30, 30, 30, 'To be confirmed by Traveller'),
-(3, 5, 1154232350, 1123, 'addr1', 'addr2', '2021-05-22', '2021-05-22', 100, 'Not Fragile', 2, 30, 30, 30, 'To be confirmed by Traveller'),
-(4, 5, 1154232350, 1123, 'addr1', 'addr2', '2021-05-22', '2021-05-25', 100, 'Fragile', 2, 30, 30, 30, 'To be confirmed by Traveller');
+(1, 4, 1154232350, 1123, 'addr1', 'addr2', '2021-05-22', '2021-05-27', 100, 'Fragile', 2, 30, 30, 30, 6),
+(2, 4, 1154232350, 1123, 'addr1', 'addr2', '2021-05-22', '2021-05-27', 100, 'Fragile', 2, 30, 30, 30, 2),
+(3, 5, 1154232350, 1123, 'addr1', 'addr2', '2021-05-22', '2021-05-22', 100, 'Not Fragile', 2, 30, 30, 30, 2),
+(4, 5, 1154232350, 1123, 'addr1', 'addr2', '2021-05-22', '2021-05-25', 100, 'Fragile', 2, 30, 30, 30, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orderstatus`
+--
+
+CREATE TABLE `orderstatus` (
+  `id` int(1) NOT NULL,
+  `state` text NOT NULL,
+  `action` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orderstatus`
+--
+
+INSERT INTO `orderstatus` (`id`, `state`, `action`) VALUES
+(1, 'Order Placed by Customer,to be confirmed by the Traveller.', 'Order to be Confirmed by the Traveller'),
+(2, 'Order Confirmed by the Traveller.', 'Parcel to be picked up by the Traveller'),
+(3, 'Parcel picked up by the Traveller', 'Parcel pickup to be confirmed by the customer'),
+(4, 'Parcel pickup confirmed by the Customer ', 'Parcel to be delivered by the Traveller'),
+(5, 'Parcel Delivered by the Traveller', 'Delivery to be confirmed by the Customer'),
+(6, 'Delivery Confirmed by the customer', 'Delivered');
 
 -- --------------------------------------------------------
 
@@ -105,22 +161,29 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`unique_id`, `type`, `first_name`, `last_name`, `email`, `pwd`, `user_status`, `img`, `aadhar_card`) VALUES
-(1123, 'traveller', 'Neel', 'Choksi', 'neel@gmail.com', '123', 'Active now', '9slides.png', NULL),
+(1123, 'traveller', 'Neel', 'Choksi', 'neel@gmail.com', '123', 'Not Active', '16211447129sides.png', NULL),
 (54229192, 'traveller', 'Neel', 'Choksi', 'neel4@gmail.com', '123', 'Active now', '16211468609sides.png', NULL),
 (262647129, 'traveller', 'Neel', 'Choksi', 'neel6@gmail.com', '123', 'Active now', '16211471689sides.png', NULL),
 (279179604, 'traveller', 'Neel', 'Choksi', 'neel2@gmail.com', '123', 'Active now', '16211465489sides.png', NULL),
 (297776232, 'traveller', 'Neel', 'Choksi', 'neel3@gmail.com', '123', 'Active now', '16211467469sides.png', NULL),
-(385801856, 'customer', 'Barry', 'Jones', 'barry@gmail.com', '123', 'Active now', '1621418628codeSnippet.png', NULL),
+(385801856, 'customer', 'Barry', 'Jones', 'barry@gmail.com', '123', 'Not Active', '1621418628codeSnippet.png', NULL),
 (796299009, 'traveller', 'Rakesh', 'Choksi', 'xyz@gmail.com', 'xyz', 'Active now', '1621264806IMG_20210510_002032.jpg', NULL),
 (935583540, 'traveller', 'Neel', 'Choksi', 'fee@ddd.com', '123', 'Active now', '16211458609sides.png', NULL),
-(1154232350, 'customer', 'John ', 'Doe', 'john@gmail.com', '123', 'Active now', '1621150812codeSnippet.jpg', NULL),
+(1154232350, 'customer', 'John ', 'Doe', 'john@gmail.com', '123', 'Not Active', '1621150812codeSnippet.jpg', NULL),
 (1288567263, 'traveller', 'Neel', 'Choksi', 'neel5@gmail.com', '123', 'Active now', '16211469469sides.png', NULL),
+(1401950665, 'traveller', 'Vedant', 'Karale', 'vedant@gmail.com', '123456', 'Active now', '1621681487IMG_20200822_142713-removebg-preview (1).png', NULL),
 (1581715094, 'traveller', 'Neel', 'Choksi', 'e@gmial.com', '123', 'Active now', '16211463419sides.png', NULL),
 (1597690749, 'traveller', 'Neel', 'Choksi', 'neel7@gmail.com', '123', 'Active now', '16211475549sides.png', NULL);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`msg_id`);
 
 --
 -- Indexes for table `orders`
@@ -130,6 +193,12 @@ ALTER TABLE `orders`
   ADD KEY `ID_TRAVELLER` (`traveller_id`),
   ADD KEY `ID_CUSTOMER` (`customer_id`),
   ADD KEY `ID_POST` (`post_id`);
+
+--
+-- Indexes for table `orderstatus`
+--
+ALTER TABLE `orderstatus`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `posts`
@@ -147,6 +216,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `orders`
