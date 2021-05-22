@@ -19,8 +19,16 @@
 					$_SESSION['type']=$row['type'];
 					$_SESSION['fname']=$row['first_name'];
 					$_SESSION['lname']=$row['last_name'];
-					$success =1;
-					echo $success;
+
+					$UPDATE_STATUS = "UPDATE users SET user_status='Active now' WHERE unique_id={$row['unique_id']};";
+					$sql4 = mysqli_query($conn,$UPDATE_STATUS);
+
+					if($sql4){
+						$success =1;
+						echo $success;
+						}
+
+
 				}else{
 				echo "user not found kindly check username or password";
 

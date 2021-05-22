@@ -49,7 +49,7 @@
 		echo $output;
 
 	}else if($context == 'customer'){
-		$FETCH_ALL_ACITVE_POSTS="SELECT * FROM posts LEFT JOIN users ON posts.unique_id=users.unique_id AND posts.post_status='Active'";
+		$FETCH_ALL_ACITVE_POSTS="SELECT * FROM posts LEFT JOIN users ON posts.unique_id=users.unique_id WHERE posts.post_status='Active';";
 		$sql = mysqli_query($conn,$FETCH_ALL_ACITVE_POSTS)	;
 
 		if(mysqli_num_rows($sql) ==0){

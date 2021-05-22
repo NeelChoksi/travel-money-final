@@ -3,7 +3,7 @@
 		session_start(); 
 		$context=$_SESSION['type'];
 		$username = $_SESSION['fname'].' '.$_SESSION['lname'];
-
+		$unique_id = $_SESSION['unique_id'];
 
 
 ?>
@@ -80,7 +80,7 @@
 		<?php } ?>
 
 			<li>
-				<a href="logout.php">Logout</a>
+				<a href="logout.php?user_id=<?php echo $unique_id ?>">Logout</a>
 			</li>
 		</ul>
 	</nav>

@@ -3,6 +3,7 @@
 		if(!isset($_SESSION['unique_id'])){
 			header('location: login.php');
 		}
+		$sender_id = $_SESSION['unique_id'];
 
 		include_once "includes/config.php";
 
@@ -33,132 +34,9 @@
 				</div>	
 			</header>	
 			<div class="chat-box">
-				<div class="chat outgoing">
-					<div class="details">
-						<p>Lorem ipsum dolor, sit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, molestias!
-						</p>
-					</div>
-				</div>
-				<div class="chat outgoing">
-					<div class="details">
-						<p>Lorem ipsum dolor, sit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, molestias!
-						</p>
-					</div>
-				</div>
-				<div class="chat outgoing">
-					<div class="details">
-						<p>Lorem ipsum dolor, sit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, molestias!
-						</p>
-					</div>
-				</div>
-				<div class="chat outgoing">
-					<div class="details">
-						<p>Lorem ipsum dolor, sit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, molestias!
-						</p>
-					</div>
-				</div>
-				<div class="chat outgoing">
-					<div class="details">
-						<p>Lorem ipsum dolor, sit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, molestias!
-						</p>
-					</div>
-				</div>
-				<div class="chat outgoing">
-					<div class="details">
-						<p>Lorem ipsum dolor, sit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, molestias!
-						</p>
-					</div>
-				</div>
-				<div class="chat outgoing">
-					<div class="details">
-						<p>Lorem ipsum dolor, sit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, molestias!
-						</p>
-					</div>
-				</div>
-				<div class="chat outgoing">
-					<div class="details">
-						<p>Lorem ipsum dolor, sit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, molestias!
-						</p>
-					</div>
-				</div>
-				<div class="chat outgoing">
-					<div class="details">
-						<p>Lorem ipsum dolor, sit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, molestias!
-						</p>
-					</div>
-				</div>
-				<div class="chat outgoing">
-					<div class="details">
-						<p>Lorem ipsum dolor, sit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, molestias!
-						</p>
-					</div>
-				</div>
-				<div class="chat outgoing">
-					<div class="details">
-						<p>Lorem ipsum dolor, sit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, molestias!
-						</p>
-					</div>
-				</div>
-				<div class="chat outgoing">
-					<div class="details">
-						<p>Lorem ipsum dolor, sit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, molestias!
-						</p>
-					</div>
-				</div>
-				<div class="chat outgoing">
-					<div class="details">
-						<p>Lorem ipsum dolor, sit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, molestias!
-						</p>
-					</div>
-				</div>
-				<div class="chat outgoing">
-					<div class="details">
-						<p>Lorem ipsum dolor, sit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, molestias!
-						</p>
-					</div>
-				</div>
-				<div class="chat outgoing">
-					<div class="details">
-						<p>Lorem ipsum dolor, sit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, molestias!
-						</p>
-					</div>
-				</div>
-				<div class="chat outgoing">
-					<div class="details">
-						<p>Lorem ipsum dolor, sit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, molestias!
-						</p>
-					</div>
-				</div>
-				<div class="chat outgoing">
-					<div class="details">
-						<p>Lorem ipsum dolor, sit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, molestias!
-						</p>
-					</div>
-				</div>
-				<div class="chat incoming">
-					<img src="#" alt="" />
-
-					<div class="details">
-						<p>Lorem ipsum dolor, sit. Lorem ipsum dolor, sit amet consectetur adipisicing, elit. Sunt, nemo pariatur voluptas!</p>
-					</div>
-				</div>
+				
+				
+				
 
 			</div>	
 			<?php if($context=='customer'){?>
@@ -169,7 +47,9 @@
 			<?php } ?>
 
 			<form action="#" class="typing-area">
-				<input type="text" placeholder="Type a message">
+				<input type="text" name="message" id="inputtext" placeholder="Type a message">
+				<input type="hidden" name="sender_id" value = "<?php echo $sender_id ?>" >
+				<input type="hidden" name="receiver_id" value = "<?php echo $id_of_clicked?>">
 				<button><i class="fab fa-telegram-plane"></i></button>
 			</form>		
 		</section>
